@@ -3,7 +3,7 @@ let userInput = document.getElementById("user-input");
 //select btn
 let submitBtn = document.getElementById("submit-btn");
 //select result container
-let resultContainer;
+let resultContainer = document.getElementById("result-container");
 //# select wordCount
 let wordCountContainer;
 //# select letterCount
@@ -37,14 +37,12 @@ function scrambleArray(oldArray) {
     let arrayValue;
 
     //randomIndex is de index met de value die we in de index i gaan steken
-    // switchen van plaats
-    arrayValue = oldArray[i]
+    // switchen van plaats https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+    arrayValue = oldArray[i];
     oldArray[i] = randomValue;
     oldArray[randomIndex] = arrayValue;
   }
-
   return oldArray;
-
 }
 
 function scrambleText(text) {
@@ -56,8 +54,12 @@ function scrambleText(text) {
 
 function onClickScramble() {
   // update textContent of resultContainer
+  if(resultContainer.innerHTML != ""){
+    resultContainer.innerHTML = "";
+  }
   let text = getUserInput();
-  console.log(scrambleText(text));
+  let array = scrambleText(text);
+  resultContainer.innerHTML = array;
 }
 
 function realTimeScramble(event) {
