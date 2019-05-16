@@ -57,6 +57,7 @@ function onClickScramble() {
   if(resultContainer.innerHTML != ""){
     resultContainer.innerHTML = "";
   }
+
   let text = getUserInput();
   let array = scrambleText(text);
   resultContainer.innerHTML = array;
@@ -64,6 +65,13 @@ function onClickScramble() {
 
 function realTimeScramble(event) {
   //## update textContent of resultContainer realtime
+  if(resultContainer.innerHTML != ""){
+    resultContainer.innerHTML = "";
+  }
+
+  let text = getUserInput();
+  let array = scrambleText(text);
+  resultContainer.innerHTML = array;
 }
 
 function getWordCount(text) {
