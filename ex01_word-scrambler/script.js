@@ -40,7 +40,7 @@ function scrambleArray(oldArray) {
     // switchen van plaats
     arrayValue = oldArray[i]
     oldArray[i] = randomValue;
-    oldArray[randomValue] = arrayValue;
+    oldArray[randomIndex] = arrayValue;
   }
 
   return oldArray;
