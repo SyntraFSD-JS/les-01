@@ -5,9 +5,9 @@ let submitBtn = document.getElementById("submit-btn");
 //select result container
 let resultContainer = document.getElementById("result-container");
 //# select wordCount
-let wordCountContainer;
+let wordCountContainer = document.getElementById("word-count");
 //# select letterCount
-let letterCountContainer;
+let letterCountContainer = document.getElementById("letter-count");
 
 
 function getUserInput() {
@@ -49,6 +49,7 @@ function scrambleText(text) {
   // return scrambled text
   let array = textToWordArray(text);
   let scrambled = scrambleArray(array);
+  getWordCount(array);
   return arrayToText(scrambled);
 }
 
@@ -60,26 +61,23 @@ function onClickScramble() {
 
   let text = getUserInput();
   let array = scrambleText(text);
+  getLetterCount(text);
   resultContainer.innerHTML = array;
 }
 
 function realTimeScramble(event) {
   //## update textContent of resultContainer realtime
-  if(resultContainer.innerHTML != ""){
-    resultContainer.innerHTML = "";
-  }
-
-  let text = getUserInput();
-  let array = scrambleText(text);
-  resultContainer.innerHTML = array;
+  onClickScramble();
 }
 
-function getWordCount(text) {
+function getWordCount(array) {
   //# return word count
+  wordCountContainer.innerHTML = array.length;
 }
 
 function getLetterCount(text) {
   //# return letter count
+  letterCountContainer.innerHTML = text.length;
 }
 
 function updateWordCount(wordCount) {
